@@ -53,7 +53,7 @@ class MovementCommandManager(Node):
 
     def register_new_robot(self,robot_name):
         """
-        registers a singme robot of a given Name and initialises a (random) movement command
+        registers a single robot of a given name and initializes a (random) movement command
         """
         robot_name="/"+robot_name
         publish_topic_name=robot_name+"/cmd_vel"
