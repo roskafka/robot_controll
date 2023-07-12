@@ -21,7 +21,7 @@ class MovementCommandManager(Node):
 
     def registration_callback(self,msg):
         """
-        registers a new robot with the recieved name
+        registers a new robot with the received name
         """
         msg_string= msg.data #message data is: "robot_type/robot_name"
         robot_type=msg_string.split("/")[0] 
@@ -41,7 +41,7 @@ class MovementCommandManager(Node):
                 publisher.publish(message)
                 #print("send message:",message," in topic", topic_name)
             
-    def recieve_command_callback(self,msg,topic_name):
+    def receive_command_callback(self,msg,topic_name):
         """
         Takes a new Movement Command and stores it (so it can be repeated)
         """
@@ -73,7 +73,7 @@ class MovementCommandManager(Node):
         subscription_topic_name=robot_name+"/repeatedMovementCommands"
         self.subscription = self.create_subscription(Twist, 
                                                      subscription_topic_name, 
-                                                     lambda msg: self.recieve_command_callback(msg, subscription_topic_name), 
+                                                     lambda msg: self.receive_command_callback(msg, subscription_topic_name),
                                                      10)
         self.targets[subscription_topic_name]=[local_publisher,newTwist]
 
